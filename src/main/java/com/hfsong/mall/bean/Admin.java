@@ -1,8 +1,3 @@
-/**
- * User: zsquirrel
- * Date: 2020/3/28
- * Time: 2:43 下午
- */
 package com.hfsong.mall.bean;
 
 public class Admin {

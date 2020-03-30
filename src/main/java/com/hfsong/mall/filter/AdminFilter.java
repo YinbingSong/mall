@@ -6,11 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * User: zsquirrel
- * Date: 2020/3/28
- * Time: 11:23 上午
- */
+
 @WebFilter("/api/*")
 public class AdminFilter implements Filter {
     public void destroy() {

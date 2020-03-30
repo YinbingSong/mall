@@ -15,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -45,10 +45,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vue" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="settings.gitee" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -235,6 +235,8 @@
       <updated>1585403218631</updated>
       <workItem from="1585403221904" duration="12555000" />
       <workItem from="1585492554890" duration="4817000" />
+      <workItem from="1585533134683" duration="1226000" />
+      <workItem from="1585534387432" duration="5135000" />
     </task>
     <servers />
   </component>
@@ -246,10 +248,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1585529900540" />
-    <state x="574" y="108" key="#com.intellij.ide.util.MemberChooser" timestamp="1585466818577">
+    <state x="574" y="108" key="#com.intellij.ide.util.MemberChooser" timestamp="1585534696681">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="574" y="108" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1585466818577" />
+    <state x="574" y="108" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1585534696681" />
     <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1585495062385">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -318,10 +320,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1024" height="202" key="GridCell.Tab.3.right/0.0.1536.864@0.0.1536.864" timestamp="1585491807872" />
-    <state x="270" y="74" key="SettingsEditor" timestamp="1585533020892">
+    <state x="270" y="74" key="SettingsEditor" timestamp="1585534272453">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="270" y="74" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1585533020892" />
+    <state x="270" y="74" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1585534272453" />
     <state x="430" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1585494809103">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

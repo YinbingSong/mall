@@ -1,11 +1,11 @@
 package com.hfsong.mall.controller;
 
-import com.google.gson.Gson;
 import com.hfsong.mall.bean.User;
 import com.hfsong.mall.bean.Result;
 import com.hfsong.mall.service.UserService;
 import com.hfsong.mall.service.impl.UserServiceImpl;
 import com.hfsong.mall.utils.HttpUtils;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,14 +21,14 @@ import java.util.Map;
 @WebServlet("/api/user/*")
 public class UserServlet extends HttpServlet {
 
-   private UserService adminService = new UserServiceImpl();
+   private UserService userService = new UserServiceImpl();
 
     Gson gson = new Gson();
 
     /**
      * 登录、新增的时候是post请求
-     * /api/admin/admin/login  登录
-     * /api/admin/admin/addAdmin  新增
+     * /api/user/login  登录
+     * /api/user/signup  新增
      * @param request
      * @param response
      * @throws ServletException
@@ -37,21 +37,21 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("post");
         String requestURI = request.getRequestURI();
-        String action = requestURI.replace("/api/admin/admin/", "");
+        String action = requestURI.replace("/api/user/", "");
         System.out.println(action);
         if("login".equals(action)){
             login(request, response);
-        }else if("addAdminss".equals(action)){
-            addAdminss(request, response);
+        }else if("signup".equals(action)){
+            signup(request, response);
         }
     }
 
     /**
-     * 新增管理员业务逻辑
+     * 注册用户业务逻辑
      * @param request
      * @param response
      */
-    private void addAdminss(HttpServletRequest request, HttpServletResponse response) {
+    private void signup(HttpServletRequest request, HttpServletResponse response) {
 
     }
 
@@ -66,15 +66,15 @@ public class UserServlet extends HttpServlet {
      */
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String requestBody = HttpUtils.getRequestBody(request);
-        Admin admin = gson.fromJson(requestBody, Admin.class);
+        User user = gson.fromJson(requestBody, User.class);
         //调用service层
-        int result = adminService.login(admin);
+        int result = userService.login(user);
         Result res = new Result();
         if(result == 200){
             res.setCode(0);
             Map<String, String> map = new HashMap<>();
-            map.put("token", admin.getEmail());
-            map.put("name", admin.getNickname());
+            map.put("token", user.getEmail());
+            map.put("name", user.getNickname());
             res.setData(map);
         }else if(result == 404){
             res.setCode(10000);
@@ -85,33 +85,33 @@ public class UserServlet extends HttpServlet {
         }
         response.getWriter().println(gson.toJson(res));
     }
-
-    /**
-     * 查询、删除
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("get");
-        String requestURI = request.getRequestURI();
-        String action = requestURI.replace("/api/admin/admin/", "");
-        if("allAdmins".equals(action)){
-            allAdmins(request, response);
-        }
-    }
-
-    /**
-     * 查询全部的admin管理员信息
-     * @param request
-     * @param response
-     */
-    private void allAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<Admin> adminList = adminService.queryAllAdmins();
-        Result result = new Result();
-        result.setCode(0);
-        result.setData(adminList);
-        response.getWriter().println(gson.toJson(result));
-    }
+//
+//    /**
+//     * 查询、删除
+//     * @param request
+//     * @param response
+//     * @throws ServletException
+//     * @throws IOException
+//     */
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        System.out.println("get");
+//        String requestURI = request.getRequestURI();
+//        String action = requestURI.replace("/api/admin/admin/", "");
+//        if("allAdmins".equals(action)){
+//            allAdmins(request, response);
+//        }
+//    }
+//
+//    /**
+//     * 查询全部的admin管理员信息
+//     * @param request
+//     * @param response
+//     */
+//    private void allAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        List<Admin> adminList = adminService.queryAllAdmins();
+//        Result result = new Result();
+//        result.setCode(0);
+//        result.setData(adminList);
+//        response.getWriter().println(gson.toJson(result));
+//    }
 }

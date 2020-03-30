@@ -1,6 +1,6 @@
 package com.hfsong.mall.bean;
 
-public class User {
+public class User{
 
     private Integer id;
 

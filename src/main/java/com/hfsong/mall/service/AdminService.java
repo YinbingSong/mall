@@ -6,6 +6,7 @@
 package com.hfsong.mall.service;
 
 import com.hfsong.mall.bean.Admin;
+import com.hfsong.mall.bean.AdminChangePwd;
 
 import java.util.List;
 
@@ -21,4 +22,8 @@ public interface AdminService {
     Admin getAdminsInfo(int id);
 
     int updateAdminss(Admin admin);
+
+    List<Admin> getSearchAdmins(Admin admin);
+
+    int changePwd(AdminChangePwd adminChangePwd);
 }

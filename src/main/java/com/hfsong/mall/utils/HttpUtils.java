@@ -1,8 +1,3 @@
-/**
- * User: zsquirrel
- * Date: 2020/3/28
- * Time: 2:46 下午
- */
 package com.hfsong.mall.utils;
 
 import javax.servlet.ServletInputStream;

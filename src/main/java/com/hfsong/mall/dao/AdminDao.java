@@ -1,6 +1,7 @@
 package com.hfsong.mall.dao;
 
 import com.hfsong.mall.bean.Admin;
+import com.hfsong.mall.bean.AdminChangePwd;
 import com.hfsong.mall.bean.User;
 
 import java.util.List;
@@ -20,6 +21,10 @@ public interface AdminDao {
     Admin getAdminsInfo(int id);
 
     int updateAdminss(Admin admin);
+
+    List<Admin> getSearchAdmins(Admin admin);
+
+    int changePwd(AdminChangePwd adminChangePwd);
 
 //    List<User> allUser();
 

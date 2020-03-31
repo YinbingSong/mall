@@ -1,6 +1,7 @@
 package com.hfsong.mall.controller;
 
 import com.hfsong.mall.bean.Admin;
+import com.hfsong.mall.bean.AdminChangePwd;
 import com.hfsong.mall.bean.Result;
 import com.hfsong.mall.service.AdminService;
 import com.hfsong.mall.service.impl.AdminServiceImpl;
@@ -33,13 +34,34 @@ public class AdminServlet extends HttpServlet {
         System.out.println(action);
         if("login".equals(action)){
             login(request, response);
-        }else if("addAdminss".equals(action)){
+        }
+
+        if("addAdminss".equals(action)){
             addAdminss(request, response);
+        }
+
+        if ("updateAdminss".equals(action)){
+            updateAdminss(request,response);
+        }
+
+        if ("getSearchAdmins".equals(action)){
+            getSearchAdmins(request,response);
+        }
+
+        if ("changePwd".equals(action)){
+            changePwd(request,response);
         }
     }
 
+    private void changePwd(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String requestBody = HttpUtils.getRequestBody(request);
+        AdminChangePwd adminChangePwd= gson.fromJson(requestBody, AdminChangePwd.class);
 
-        private void addAdminss(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        adminService.changePwd(adminChangePwd);
+    }
+
+
+    private void addAdminss(HttpServletRequest request, HttpServletResponse response) throws IOException {
             String requestBody = HttpUtils.getRequestBody(request);
             Admin admin = gson.fromJson(requestBody, Admin.class);
             //调用service层
@@ -105,6 +127,23 @@ public class AdminServlet extends HttpServlet {
 
         }
 
+        private void getSearchAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+            String requestBody = HttpUtils.getRequestBody(request);
+            Admin admin = gson.fromJson(requestBody, Admin.class);
+            //调用service层
+            List<Admin> adminList= adminService.getSearchAdmins(admin);
+            Result res = new Result();
+            if(adminList != null){
+                res.setCode(0);
+                res.setData(adminList);
+            }else{
+                res.setCode(10000);
+                res.setMessage("当前访问异常，稍后重试");
+            }
+            response.getWriter().println(gson.toJson(res));
+        }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("get");
@@ -115,6 +154,9 @@ public class AdminServlet extends HttpServlet {
         }
         if("deleteAdmins".equals(action)){
             deleteAdmins(request, response);
+        }
+        if ("getAdminsInfo".equals(action)){
+            getAdminsInfo(request,response);
         }
     }
 

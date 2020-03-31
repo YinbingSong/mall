@@ -26,7 +26,7 @@ public interface AdminDao {
 
     int changePwd(AdminChangePwd adminChangePwd);
 
-//    List<User> allUser();
+   List<User> allUser();
 
 
 }

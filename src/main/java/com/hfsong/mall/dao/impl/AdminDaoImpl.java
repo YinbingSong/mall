@@ -3,6 +3,7 @@ package com.hfsong.mall.dao.impl;
 import com.alibaba.druid.util.StringUtils;
 import com.hfsong.mall.bean.Admin;
 import com.hfsong.mall.bean.AdminChangePwd;
+import com.hfsong.mall.bean.User;
 import com.hfsong.mall.dao.AdminDao;
 import com.hfsong.mall.utils.DruidUtils;
 import org.apache.commons.dbutils.QueryRunner;
@@ -180,5 +181,17 @@ public class AdminDaoImpl implements AdminDao {
         }
         //信息填写错误
         return 404;
+    }
+
+    @Override
+    public List<User> allUser() {
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        List<User> userList = null;
+        try {
+            userList = runner.query("select * from user", new BeanListHandler<User>(User.class));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
     }
 }

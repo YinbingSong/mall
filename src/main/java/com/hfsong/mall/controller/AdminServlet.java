@@ -3,6 +3,7 @@ package com.hfsong.mall.controller;
 import com.hfsong.mall.bean.Admin;
 import com.hfsong.mall.bean.AdminChangePwd;
 import com.hfsong.mall.bean.Result;
+import com.hfsong.mall.bean.User;
 import com.hfsong.mall.service.AdminService;
 import com.hfsong.mall.service.impl.AdminServiceImpl;
 import com.hfsong.mall.utils.HttpUtils;
@@ -53,7 +54,7 @@ public class AdminServlet extends HttpServlet {
         }
     }
 
-    private void changePwd(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        private void changePwd(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String requestBody = HttpUtils.getRequestBody(request);
         AdminChangePwd adminChangePwd= gson.fromJson(requestBody, AdminChangePwd.class);
 
@@ -61,7 +62,7 @@ public class AdminServlet extends HttpServlet {
     }
 
 
-    private void addAdminss(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        private void addAdminss(HttpServletRequest request, HttpServletResponse response) throws IOException {
             String requestBody = HttpUtils.getRequestBody(request);
             Admin admin = gson.fromJson(requestBody, Admin.class);
             //调用service层
@@ -158,7 +159,18 @@ public class AdminServlet extends HttpServlet {
         if ("getAdminsInfo".equals(action)){
             getAdminsInfo(request,response);
         }
+        if ("allUser()".equals(action)){
+            allUser(request,response);
+        }
     }
+
+        private void allUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            List<User> userList = adminService.allUser();
+            Result result = new Result();
+            result.setCode(0);
+            result.setData(userList);
+            response.getWriter().println(gson.toJson(result));
+        }
 
 
         private void allAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException {

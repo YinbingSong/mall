@@ -6,6 +6,7 @@
 package com.hfsong.mall.service.impl;
 
 import com.hfsong.mall.bean.AdminChangePwd;
+import com.hfsong.mall.bean.User;
 import com.hfsong.mall.dao.impl.AdminDaoImpl;
 import com.hfsong.mall.service.AdminService;
 import com.hfsong.mall.bean.Admin;
@@ -55,5 +56,10 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int changePwd(AdminChangePwd adminChangePwd) {
         return adminDao.changePwd(adminChangePwd);
+    }
+
+    @Override
+    public List<User> allUser(){
+        return adminDao.allUser();
     }
 }

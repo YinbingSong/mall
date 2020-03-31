@@ -25,15 +25,6 @@ public class UserServlet extends HttpServlet {
 
     Gson gson = new Gson();
 
-    /**
-     * 登录、新增的时候是post请求
-     * /api/user/login  登录
-     * /api/user/signup  新增
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("post");
         String requestURI = request.getRequestURI();
@@ -46,24 +37,11 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    /**
-     * 注册用户业务逻辑
-     * @param request
-     * @param response
-     */
     private void signup(HttpServletRequest request, HttpServletResponse response) {
 
     }
 
-    /**
-     * 登录的具体业务逻辑实现
-     * 思路：从请求体中获取到参数
-     *      解析出admin对象
-     *      数据库查询结果
-     *      返回结果
-     * @param request
-     * @param response
-     */
+
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String requestBody = HttpUtils.getRequestBody(request);
         User user = gson.fromJson(requestBody, User.class);

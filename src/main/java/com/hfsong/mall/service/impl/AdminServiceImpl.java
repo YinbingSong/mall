@@ -35,4 +35,14 @@ public class AdminServiceImpl implements AdminService {
     public int deleteAdmins(int id) {
         return adminDao.deleteAdmins(id);
     }
+
+    @Override
+    public Admin getAdminsInfo(int id) {
+        return adminDao.getAdminsInfo(id);
+    }
+
+    @Override
+    public int updateAdminss(Admin admin) {
+        return  adminDao.updateAdminss(admin);
+    }
 }

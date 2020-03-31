@@ -84,4 +84,42 @@ public class AdminDaoImpl implements AdminDao {
         }
         return 404;
     }
+
+//    获得管理员信息
+    @Override
+    public Admin getAdminsInfo(int id) {
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        Admin query = null;
+        try {
+            query = runner.query("select * from admin where id = ?",
+                    new BeanHandler<>(Admin.class),
+                    id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return query;
+    }
+
+//    修改管理员信息
+    @Override
+    public int updateAdminss(Admin admin) {
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        int update = 0;
+        try {
+            update =runner.update("update admin set email = ?, nickname = ?, pwd = ? where id = ?",
+                    admin.getEmail(),
+                    admin.getNickname(),
+                    admin.getPwd(),
+                    admin.getId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 500;
+        }
+        if(update != 0){
+            return 200;
+        }
+        return 404;
+    }
+
+
 }

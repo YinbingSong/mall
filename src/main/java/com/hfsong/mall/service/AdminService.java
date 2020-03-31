@@ -17,4 +17,8 @@ public interface AdminService {
     int addAdminss(Admin admin);
 
     int deleteAdmins(int id);
+
+    Admin getAdminsInfo(int id);
+
+    int updateAdminss(Admin admin);
 }

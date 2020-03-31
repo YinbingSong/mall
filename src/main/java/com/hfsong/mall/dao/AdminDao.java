@@ -1,8 +1,3 @@
-/**
- * User: zsquirrel
- * Date: 2020/3/28
- * Time: 2:52 下午
- */
 package com.hfsong.mall.dao;
 
 import com.hfsong.mall.bean.Admin;
@@ -22,8 +17,9 @@ public interface AdminDao {
 
     int deleteAdmins(int id);
 
- //   Admin getAdminsInfo(int id);
+    Admin getAdminsInfo(int id);
 
+    int updateAdminss(Admin admin);
 
 //    List<User> allUser();
 

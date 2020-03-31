@@ -85,6 +85,26 @@ public class AdminServlet extends HttpServlet {
             response.getWriter().println(gson.toJson(res));
         }
 
+        private void updateAdminss(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            String requestBody = HttpUtils.getRequestBody(request);
+            Admin admin = gson.fromJson(requestBody, Admin.class);
+            //调用service层
+            int result = adminService.updateAdminss(admin);
+            Result res = new Result();
+            if(result == 200){
+                res.setCode(0);
+                res.setMessage("修改成功");
+            }else if(result == 404){
+                res.setCode(10000);
+                res.setMessage("用户名或者密码错误");
+            }else{
+                res.setCode(10000);
+                res.setMessage("当前访问异常，稍后重试");
+            }
+            response.getWriter().println(gson.toJson(res));
+
+        }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("get");
@@ -125,5 +145,14 @@ public class AdminServlet extends HttpServlet {
             }
             response.getWriter().println(gson.toJson(res));
 
+        }
+
+        private void getAdminsInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            int id = Integer.parseInt(request.getParameter("id"));
+            Admin adminsInfo = adminService.getAdminsInfo(id);
+            Result result = new Result();
+            result.setCode(0);
+            result.setData(adminsInfo);
+            response.getWriter().println(gson.toJson(result));
         }
 }

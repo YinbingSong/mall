@@ -1,7 +1,9 @@
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\controller\UserServlet.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\service\AdminService.java
+D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\service\UserService.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\utils\DruidUtils.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\dao\AdminDao.java
+D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\dao\impl\UserDaoImpl.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\bean\Admin.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\service\impl\AdminServiceImpl.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\bean\User.java
@@ -10,5 +12,6 @@ D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\controller\AdminServlet.
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\dao\UserDao.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\dao\impl\AdminDaoImpl.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\bean\Result.java
+D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\service\impl\UserServiceImpl.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\utils\FileUploadUtils.java
 D:\Test\JavaEE\Day12_mall\src\main\java\com\hfsong\mall\utils\HttpUtils.java

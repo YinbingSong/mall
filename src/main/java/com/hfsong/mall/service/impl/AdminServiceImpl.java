@@ -25,4 +25,14 @@ public class AdminServiceImpl implements AdminService {
     public List<Admin> queryAllAdmins() {
         return adminDao.queryAllAdmins();
     }
+
+    @Override
+    public int addAdminss(Admin admin) {
+        return adminDao.addAdminss(admin);
+    }
+
+    @Override
+    public int deleteAdmins(int id) {
+        return adminDao.deleteAdmins(id);
+    }
 }

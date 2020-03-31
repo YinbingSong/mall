@@ -1,8 +1,3 @@
-/**
- * User: zsquirrel
- * Date: 2020/3/26
- * Time: 10:09 上午
- */
 package com.hfsong.mall.utils;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;

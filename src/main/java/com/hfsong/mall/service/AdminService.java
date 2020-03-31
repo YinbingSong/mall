@@ -14,4 +14,7 @@ public interface AdminService {
 
     List<Admin> queryAllAdmins();
 
+    int addAdminss(Admin admin);
+
+    int deleteAdmins(int id);
 }

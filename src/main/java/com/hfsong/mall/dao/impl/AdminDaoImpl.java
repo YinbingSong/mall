@@ -12,6 +12,7 @@ import java.util.List;
 
 public class AdminDaoImpl implements AdminDao {
 
+//    管理员登陆
     @Override
     public int login(Admin admin) {
         //sql
@@ -32,6 +33,7 @@ public class AdminDaoImpl implements AdminDao {
         return 404;
     }
 
+//    查询全部管理员
     @Override
     public List<Admin> queryAllAdmins() {
         QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
@@ -42,5 +44,44 @@ public class AdminDaoImpl implements AdminDao {
             e.printStackTrace();
         }
         return adminList;
+    }
+
+//    添加管理员
+    @Override
+    public int addAdminss(Admin admin) {
+
+        //sql
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        int update = 0;
+        try {
+            update = runner.update("insert into admin values (null, ?, ?, ?)",
+                    admin.getEmail(),
+                    admin.getNickname(),
+                    admin.getPwd());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 500;
+        }
+        if(update != 0){
+            return 200;
+        }
+        return 404;
+    }
+
+//    删除管理员
+    @Override
+    public int deleteAdmins(int id) {
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        int update = 0;
+        try {
+            update =runner.update("delete from admin where id = ?", id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 500;
+        }
+        if(update != 0){
+            return 200;
+        }
+        return 404;
     }
 }

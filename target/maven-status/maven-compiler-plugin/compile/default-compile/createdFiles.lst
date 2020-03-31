@@ -2,6 +2,7 @@ com\hfsong\mall\bean\User.class
 com\hfsong\mall\dao\impl\AdminDaoImpl.class
 com\hfsong\mall\utils\DruidUtils.class
 com\hfsong\mall\filter\AdminFilter.class
+com\hfsong\mall\service\UserService.class
 com\hfsong\mall\utils\HttpUtils.class
 com\hfsong\mall\service\AdminService.class
 com\hfsong\mall\service\impl\AdminServiceImpl.class
@@ -12,3 +13,5 @@ com\hfsong\mall\bean\Result.class
 com\hfsong\mall\dao\AdminDao.class
 com\hfsong\mall\bean\Admin.class
 com\hfsong\mall\controller\AdminServlet.class
+com\hfsong\mall\service\impl\UserServiceImpl.class
+com\hfsong\mall\dao\impl\UserDaoImpl.class

@@ -194,4 +194,34 @@ public class AdminDaoImpl implements AdminDao {
         }
         return userList;
     }
+
+    @Override
+    public int deleteUser(int id) {
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        int update = 0;
+        try {
+            update = runner.update("delete from user where id = ?", id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 500;
+        }
+        if (update != 0) {
+            return 200;
+        }
+        return 404;
+    }
+
+    @Override
+    public List<User> searchUser(int word) {
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        List<User> userList = null;
+        try {
+            userList = runner.query("select * from admin where nickname = ? ",
+                    new BeanListHandler<User>(User.class),
+                    word);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
 }

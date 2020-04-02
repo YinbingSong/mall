@@ -29,4 +29,8 @@ public interface AdminService {
     int changePwd(AdminChangePwd adminChangePwd);
 
     List<User> allUser();
+
+    int deleteUser(int id);
+
+    List<User> searchUser(int word);
 }

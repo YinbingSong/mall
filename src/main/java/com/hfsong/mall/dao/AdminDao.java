@@ -29,4 +29,7 @@ public interface AdminDao {
    List<User> allUser();
 
 
+    int deleteUser(int id);
+
+    List<User> searchUser(int word);
 }

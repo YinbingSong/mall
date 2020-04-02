@@ -129,7 +129,6 @@ public class AdminServlet extends HttpServlet {
         }
 
         private void getSearchAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
             String requestBody = HttpUtils.getRequestBody(request);
             Admin admin = gson.fromJson(requestBody, Admin.class);
             //调用service层
@@ -159,10 +158,34 @@ public class AdminServlet extends HttpServlet {
         if ("getAdminsInfo".equals(action)){
             getAdminsInfo(request,response);
         }
-        if ("allUser()".equals(action)){
+        if ("allUser".equals(action)){
             allUser(request,response);
         }
+        if ("deleteUser".equals(action)){
+            deleteUser(request,response);
+        }
+        if ("deleteUser".equals(action)){
+            deleteUser(request,response);
+        }
+        if ("searchUser".equals(action)){
+            searchUser(request,response);
+        }
     }
+
+        private void searchUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            int word = Integer.parseInt(request.getParameter("word"));
+//            调用service层
+            List<User> userList= adminService.searchUser(word);
+            Result res = new Result();
+            if(userList != null){
+                res.setCode(0);
+                res.setData(userList);
+            }else{
+                res.setCode(10000);
+                res.setMessage("当前访问异常，稍后重试");
+            }
+            response.getWriter().println(gson.toJson(res));
+        }
 
         private void allUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
             List<User> userList = adminService.allUser();
@@ -171,7 +194,6 @@ public class AdminServlet extends HttpServlet {
             result.setData(userList);
             response.getWriter().println(gson.toJson(result));
         }
-
 
         private void allAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException {
             List<Admin> adminList = adminService.queryAllAdmins();
@@ -182,7 +204,7 @@ public class AdminServlet extends HttpServlet {
         }
 
         private void deleteAdmins(HttpServletRequest request, HttpServletResponse response) throws IOException {
-            String requestBody = HttpUtils.getRequestBody(request);
+//            String requestBody = HttpUtils.getRequestBody(request);
             int id = Integer.parseInt(request.getParameter("id"));
 //            调用service层
             int result= adminService.deleteAdmins(id);
@@ -208,5 +230,24 @@ public class AdminServlet extends HttpServlet {
             result.setCode(0);
             result.setData(adminsInfo);
             response.getWriter().println(gson.toJson(result));
+        }
+
+        private void deleteUser (HttpServletRequest request, HttpServletResponse response) throws IOException {
+            String requestBody = HttpUtils.getRequestBody(request);
+            int id = Integer.parseInt(request.getParameter("id"));
+//            调用service层
+            int result= adminService.deleteUser(id);
+            Result res = new Result();
+            if (result == 200){
+                res.setCode(0);
+                res.setMessage("删除成功");
+            } else if(result == 404){
+                res.setCode(10000);
+                res.setMessage("没有当前用户");
+            }else{
+                res.setCode(10000);
+                res.setMessage("当前访问异常，稍后重试");
+            }
+            response.getWriter().println(gson.toJson(res));
         }
 }

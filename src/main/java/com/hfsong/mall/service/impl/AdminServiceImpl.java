@@ -62,4 +62,14 @@ public class AdminServiceImpl implements AdminService {
     public List<User> allUser(){
         return adminDao.allUser();
     }
+
+    @Override
+    public int deleteUser(int id) {
+        return adminDao.deleteUser(id);
+    }
+
+    @Override
+    public List<User> searchUser(int word) {
+        return adminDao.searchUser(word);
+    }
 }

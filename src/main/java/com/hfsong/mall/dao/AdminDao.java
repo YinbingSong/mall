@@ -1,8 +1,6 @@
 package com.hfsong.mall.dao;
 
-import com.hfsong.mall.bean.Admin;
-import com.hfsong.mall.bean.AdminChangePwd;
-import com.hfsong.mall.bean.User;
+import com.hfsong.mall.bean.*;
 
 import java.util.List;
 
@@ -32,4 +30,10 @@ public interface AdminDao {
     int deleteUser(int id);
 
     List<User> searchUser(int word);
+
+    List<Type> allTypes();
+
+    List<Good> getGoodsByType(int typeId);
+
+    int deleteGoods(int id);
 }

@@ -1,9 +1,6 @@
 package com.hfsong.mall.controller;
 
-import com.hfsong.mall.bean.Admin;
-import com.hfsong.mall.bean.AdminChangePwd;
-import com.hfsong.mall.bean.Result;
-import com.hfsong.mall.bean.User;
+import com.hfsong.mall.bean.*;
 import com.hfsong.mall.service.AdminService;
 import com.hfsong.mall.service.impl.AdminServiceImpl;
 import com.hfsong.mall.utils.HttpUtils;
@@ -170,6 +167,12 @@ public class AdminServlet extends HttpServlet {
         if ("searchUser".equals(action)){
             searchUser(request,response);
         }
+        if ("getType".equals(action)){
+            getType(request,response);
+        }
+        if ("getGoodsByType".equals(action)){
+            getGoodsByType(request,response);
+        }
     }
 
         private void searchUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -233,7 +236,6 @@ public class AdminServlet extends HttpServlet {
         }
 
         private void deleteUser (HttpServletRequest request, HttpServletResponse response) throws IOException {
-            String requestBody = HttpUtils.getRequestBody(request);
             int id = Integer.parseInt(request.getParameter("id"));
 //            调用service层
             int result= adminService.deleteUser(id);
@@ -250,4 +252,46 @@ public class AdminServlet extends HttpServlet {
             }
             response.getWriter().println(gson.toJson(res));
         }
+
+        private void getType (HttpServletRequest request, HttpServletResponse response) throws IOException {
+            List<Type> typeList = adminService.queryAllType();
+            Result result = new Result();
+            result.setCode(0);
+            result.setData(typeList);
+            response.getWriter().println(gson.toJson(result));
+    }
+
+        private void getGoodsByType(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            int typeId = Integer.parseInt(request.getParameter("typeId"));
+//            调用service层
+            List<Good> goodsList= adminService.getGoodsByType(typeId);
+            Result res = new Result();
+            if(goodsList != null){
+                res.setCode(0);
+                res.setData(goodsList);
+            }else{
+                res.setCode(10000);
+                res.setMessage("当前访问异常，稍后重试");
+            }
+            response.getWriter().println(gson.toJson(res));
+        }
+
+
+        private void deleteGoods (HttpServletRequest request, HttpServletResponse response) throws IOException {
+            int id = Integer.parseInt(request.getParameter("id"));
+//            调用service层
+            int result= adminService.deleteGoods(id);
+            Result res = new Result();
+            if (result == 200){
+                res.setCode(0);
+                res.setMessage("删除成功");
+            } else if(result == 404){
+                res.setCode(10000);
+                res.setMessage("没有当前用户");
+            }else{
+                res.setCode(10000);
+                res.setMessage("当前访问异常，稍后重试");
+            }
+            response.getWriter().println(gson.toJson(res));
+    }
 }

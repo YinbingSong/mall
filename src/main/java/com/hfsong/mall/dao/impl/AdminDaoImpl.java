@@ -1,9 +1,7 @@
 package com.hfsong.mall.dao.impl;
 
 import com.alibaba.druid.util.StringUtils;
-import com.hfsong.mall.bean.Admin;
-import com.hfsong.mall.bean.AdminChangePwd;
-import com.hfsong.mall.bean.User;
+import com.hfsong.mall.bean.*;
 import com.hfsong.mall.dao.AdminDao;
 import com.hfsong.mall.utils.DruidUtils;
 import org.apache.commons.dbutils.QueryRunner;
@@ -223,5 +221,47 @@ public class AdminDaoImpl implements AdminDao {
             e.printStackTrace();
         }
         return userList;
+    }
+
+    @Override
+    public List<Type> allTypes() {
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        List<Type> typeList = null;
+        try {
+            typeList = runner.query("select * from type", new BeanListHandler<Type>(Type.class));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return typeList;
+    }
+
+    @Override
+    public List<Good> getGoodsByType(int typeId) {
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        List<Good> goodsList = null;
+        try {
+            goodsList = runner.query("select * from goods where type = ? ",
+                    new BeanListHandler<Good>(Good.class),
+                    typeId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return goodsList;
+    }
+
+    @Override
+    public int deleteGoods(int id) {
+        QueryRunner runner = new QueryRunner(DruidUtils.getDataSource());
+        int update = 0;
+        try {
+            update = runner.update("delete from good where id = ?", id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 500;
+        }
+        if (update != 0) {
+            return 200;
+        }
+        return 404;
     }
 }

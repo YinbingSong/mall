@@ -19,7 +19,24 @@
 
 #### 		2. 用户管理
 
+> ​	1.addGoods
+
+```
+{name: "1", typeId: "236", img: "", desc: "描述",…}
+name: "1"
+typeId: "236"
+img: ""
+desc: "描述"
+specList: [{specName: "默认", stockNum: "2", unitPrice: "3"}]
+```
+
+
+
 #### 		3. 商品管理
+
+
+
+
 
 ### get:
 
@@ -55,7 +72,43 @@
 #### 		3. 商品管理
 
 > 7. getType
-> 8. getGoodsByType
+
+```
+>       Response:
+>            {"code":0,"data":[{"id":190,"name":"男装"},{"id":191,"name":"电子产品"},{"id":192,"name":"食品"},{"id":193,"name":"家居家具"},{"id":194,"name":"二手交易"},{"id":206,"name":"书籍"},{"id":216,"name":"水果"},{"id":224,"name":"咖啡"},{"id":225,"name":"球鞋"},{"id":230,"name":"灵丹"},{"id":233,"name":"啥玩意"},{"id":235,"name":"文具"}]}
+```
+
+>8. getGoodsByType
+
+```
+>       Request:
+>    
+>    ​		typeId: 190
+>    
+>       Response:
+>    
+>    ​		{"code":0,"data":[{"id":475,"img":"http://115.29.141.32:8084/static/image/1570850192433156699448698020190828201124.jpg","name":"半身裙","price":100.0,"typeId":190,"stockNum":1532},{"id":534,"img":"http://115.29.141.32:8084/static/image/1585744787830timg (1).jpg","name":"球鞋","price":1399.0,"typeId":190,"stockNum":123118}]}
+```
+
+​	
+
+>       9.deleteGoods?id=546
+
+```
+>       Request:
+>    
+>    ​		id: 546
+>    
+>       Response:
+>    
+>    ​		{"code":0}
+```
+
+
+
+
+
+
 
 ## 2.用户模块：/api/admin/user/*
 

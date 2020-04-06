@@ -6,6 +6,8 @@
 package com.hfsong.mall.service.impl;
 
 import com.hfsong.mall.bean.*;
+import com.hfsong.mall.bean.Admin.Admin;
+import com.hfsong.mall.bean.Admin.AdminChangePwd;
 import com.hfsong.mall.dao.impl.AdminDaoImpl;
 import com.hfsong.mall.service.AdminService;
 import com.hfsong.mall.dao.AdminDao;
@@ -71,18 +73,4 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.searchUser(word);
     }
 
-    @Override
-    public List<Type> queryAllType() {
-        return adminDao.allTypes();
-    }
-
-    @Override
-    public List<Good> getGoodsByType(int typeId) {
-        return adminDao.getGoodsByType(typeId);
-    }
-
-    @Override
-    public int deleteGoods(int id) {
-        return adminDao.deleteGoods(id);
-    }
 }

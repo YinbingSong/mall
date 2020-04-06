@@ -1,11 +1,8 @@
-/**
- * User: zsquirrel
- * Date: 2020/3/28
- * Time: 2:49 下午
- */
 package com.hfsong.mall.service;
 
 import com.hfsong.mall.bean.*;
+import com.hfsong.mall.bean.Admin.Admin;
+import com.hfsong.mall.bean.Admin.AdminChangePwd;
 
 import java.util.List;
 
@@ -31,10 +28,4 @@ public interface AdminService {
     int deleteUser(int id);
 
     List<User> searchUser(int word);
-
-    List<Type> queryAllType();
-
-    List<Good> getGoodsByType(int typeId);
-
-    int deleteGoods(int id);
 }

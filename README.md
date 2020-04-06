@@ -19,6 +19,9 @@
 
 #### 		2. 用户管理
 
+
+
+#### 		3. 商品管理
 > ​	1.addGoods
 
 ```
@@ -29,13 +32,35 @@ img: ""
 desc: "描述"
 specList: [{specName: "默认", stockNum: "2", unitPrice: "3"}]
 ```
+	
+> 	2.addType
 
+```
+Request:
+name: "juno"
+Response:
+{"code":0}
+```
 
+> 	3.addGoods
 
-#### 		3. 商品管理
+```
+Request:
+name: "juno"
+Response:
+{"code":0}
+```
 
+> 	4.imgUpload
 
+> 	5.deleteSpec
 
+> 	6.updateGoods
+
+> 	7.addSpec
+
+#### 		4. 订单管理
+> 	1.ordersByPage
 
 
 ### get:
@@ -48,8 +73,8 @@ specList: [{specName: "默认", stockNum: "2", unitPrice: "3"}]
 
 ####  		2. 用户管理
 
-> 4. allUser
-> 5. deleteUser
+> 1. allUser
+> 2. deleteUser
 
 ```
    Request:
@@ -58,7 +83,7 @@ specList: [{specName: "默认", stockNum: "2", unitPrice: "3"}]
    {"code":0}
 ```
 
-> ​	6.searchUser
+> ​3.searchUser
 
 ```
    Request:
@@ -71,14 +96,14 @@ specList: [{specName: "默认", stockNum: "2", unitPrice: "3"}]
 
 #### 		3. 商品管理
 
-> 7. getType
+> 1. getType
 
 ```
 >       Response:
 >            {"code":0,"data":[{"id":190,"name":"男装"},{"id":191,"name":"电子产品"},{"id":192,"name":"食品"},{"id":193,"name":"家居家具"},{"id":194,"name":"二手交易"},{"id":206,"name":"书籍"},{"id":216,"name":"水果"},{"id":224,"name":"咖啡"},{"id":225,"name":"球鞋"},{"id":230,"name":"灵丹"},{"id":233,"name":"啥玩意"},{"id":235,"name":"文具"}]}
 ```
 
->8. getGoodsByType
+> 2. getGoodsByType
 
 ```
 >       Request:
@@ -92,7 +117,7 @@ specList: [{specName: "默认", stockNum: "2", unitPrice: "3"}]
 
 ​	
 
->       9.deleteGoods?id=546
+> 3.deleteGoods?id=546
 
 ```
 >       Request:
@@ -104,9 +129,10 @@ specList: [{specName: "默认", stockNum: "2", unitPrice: "3"}]
 >    ​		{"code":0}
 ```
 
+> 4.getGoodsInfo
 
-
-
+#### 		4. 订单管理
+ordersByPage
 
 
 

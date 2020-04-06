@@ -1,8 +1,4 @@
-/**
- * User: zsquirrel
- * Date: 2020/3/20
- * Time: 2:42 下午
- */
+
 package com.hfsong.mall.utils;
 
 import org.apache.commons.fileupload.FileItem;
@@ -32,7 +28,7 @@ public class FileUploadUtils {
         //最核心的一步
         try {
             //设置单个文件的上传大小限制 bytes  5M
-            upload.setFileSizeMax(100);
+            //upload.setFileSizeMax(100);
             //设置完了之后才解析
             List<FileItem> items = upload.parseRequest(request);
             //允许提交文件的最大容量
